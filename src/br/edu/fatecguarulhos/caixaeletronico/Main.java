@@ -3,7 +3,9 @@ package br.edu.fatecguarulhos.caixaeletronico;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		CaixaEletronico cx = new CaixaEletronico();
+		
+		System.out.println(cx.sacar(317));
 
 	}
 
