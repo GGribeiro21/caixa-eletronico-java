@@ -1,6 +1,9 @@
 package br.edu.fatecguarulhos.caixaeletronico;
 
 public class CaixaEletronico implements ICaixaEletronico{
+    private int saldo;
+    private int cotaMinima;
+
 	private int[][] cedulas = {{100,100}, {50,200}, {20,300},{10,350},{5,450}, {2,500}};
 	public CaixaEletronico() {
 	}
@@ -58,8 +61,15 @@ public class CaixaEletronico implements ICaixaEletronico{
 			return resposta;
 		}
 		public String armazenaCotaMinima(Integer minimo) {
-		String resposta = "";
+        cotaMinima = minimo;
+		String resposta = "Cota mínima atual de R$" + minimo;
 		//logica de armazenar a cota minima para saque e criar um //mensagem(resposta)ao usuario
 		return resposta;
 		}
+
+        public void verificarCotaMinima() {
+            if(cotaMinima > saldo)
+                throw (new RuntimeException("Caixa vazio: Chame o operador"));
+        }
+
 }
