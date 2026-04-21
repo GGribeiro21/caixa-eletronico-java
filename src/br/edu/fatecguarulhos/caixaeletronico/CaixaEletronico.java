@@ -21,9 +21,10 @@ public class CaixaEletronico implements ICaixaEletronico{
 	    return resposta;
 	}
 		public String pegaValorTotalDisponivel() {
-		String resposta = ("Valor total disponivel : R$"+totalDisponivel+",00");
-		//logica de pega o valor total disponivel no caixa eletronio
-		return resposta;
+			atualizarTotalDisponivel();
+			String resposta = ("Valor total disponivel : R$"+totalDisponivel+",00");
+			//logica de pega o valor total disponivel no caixa eletronio
+			return resposta;
 		}
 		
 		public String reposicaoCedulas(Integer cedula, Integer quantidade) {
@@ -58,7 +59,6 @@ public class CaixaEletronico implements ICaixaEletronico{
 			int valorSacado = valor;
 			int[][] notasParaSaque = {{100,0},{50,0},{20,0},{10,0}, {5,0},{2,0}};
 			int cedulasEmitidas = 0;
-			int valorEntregue = 0;
 			String resposta = "";
 			System.out.println("Valor a sacar: R$" + valor);
 			for(int i = 0; i < 6; i++) {
@@ -105,7 +105,7 @@ public class CaixaEletronico implements ICaixaEletronico{
                 throw new RuntimeException("Caixa vazio: Chame o operador");
         }
 
-        public void atualizarTotalDisponivel() {
+        private void atualizarTotalDisponivel() {
             for(int[] cedula : cedulas) {
                 // para cada cedula, adicionar o resultado do tipo(2, 5, 10 reais...) x quantidade
                 totalDisponivel += cedula[0] *  cedula[1];
