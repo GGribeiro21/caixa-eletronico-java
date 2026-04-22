@@ -13,7 +13,7 @@ public class Main {
 		System.out.println(cx.sacar(3000));
         System.out.println(cx.armazenaCotaMinima(100000));
         cx.verificarCotaMinima();
-
+        System.out.println(cx.pegaValorTotalDisponivel());
 		
 	}
 
