@@ -99,7 +99,6 @@ public class TelaPrincipal extends JFrame {
 		btnRelaCedu.setBounds(20, 159, 324, 34);
 		contentPane.add(btnRelaCedu);
 		
-		
 		JButton btnValor = new JButton("Valor total disponível");
 		btnValor.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnValor.setBackground(new Color(201, 231, 227));
@@ -128,12 +127,20 @@ public class TelaPrincipal extends JFrame {
 		lblMAmbos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblMAmbos.setBounds(10, 410, 142, 34);
 		contentPane.add(lblMAmbos);
-		
+			
+		//Botão responsável por exibir o extrato e encerrar a aplicação 
 		JButton btnSair = new JButton("Sair");
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSair.setBackground(new Color(201, 231, 227));
 		btnSair.setBounds(10, 455, 324, 34);
 		contentPane.add(btnSair);
+		
+		//Integração com o botão gerarExtratoFinal() da Classe CaixaEletronico
+		btnSair.addActionListener(e -> {
+			String extrato = caixaEletronico.gerarExtratoFinal();
+			JOptionPane.showMessageDialog(this,  extrato, "Extrato Final", JOptionPane.INFORMATION_MESSAGE);
+			System.exit(0);
+		});
 
 	}
 

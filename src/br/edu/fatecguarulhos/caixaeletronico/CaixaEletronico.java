@@ -159,18 +159,4 @@ public class CaixaEletronico implements ICaixaEletronico{
         	return "===== EXTRATO =====\n\n" + extrato + "Saldo final: R$ "+totalDisponivel;
         } 
 
-        
-        /*public static void main(String[] args) {
-            CaixaEletronico caixa = new CaixaEletronico();
-
-            System.out.println("=== TESTE ===");
-
-            // Simulando saques
-            System.out.println(caixa.sacar(150));
-            System.out.println(caixa.sacar(70));
-
-            // Simulando botão sair (extrato)
-            System.out.println(caixa.gerarExtratoFinal());
-        }*/
-        
 }
