@@ -166,6 +166,7 @@ public class TelaPrincipal extends JFrame {
 	
 	private void mostrarPainelSaque() {
 		try {
+			caixaEletronico.verificarCotaMinima();
 			IconFontSwing.register(FontAwesome.getIconFont());
 			Icon icon = IconFontSwing.buildIcon(FontAwesome.MONEY, 30);
 			String valor = (String) JOptionPane.showInputDialog(this,"Digite o valor que deseja sacar:","Saque",JOptionPane.INFORMATION_MESSAGE,icon, null, "");
@@ -210,15 +211,20 @@ public class TelaPrincipal extends JFrame {
 		IconFontSwing.register(FontAwesome.getIconFont());
 		Icon icon = IconFontSwing.buildIcon(FontAwesome.MONEY, 30);
 		String cotaMinima = (String) JOptionPane.showInputDialog(this,"Digite o novo valor para cota mínima:","Repor",JOptionPane.INFORMATION_MESSAGE,icon, null, "");
-		try {
-			Integer cotaMinimaDigitada = Integer.parseInt(cotaMinima);
-			String mensagem = caixaEletronico.armazenaCotaMinima(cotaMinimaDigitada);
-			JOptionPane.showMessageDialog(this, mensagem);
-			caixaEletronico.verificarCotaMinima();
-			} catch (RuntimeException re) {
-				JOptionPane.showMessageDialog(this, re.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-	        } catch (Exception e) {
-	        	JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-	        }
-	}
+		// verificar se foi apertado o "cancel"
+		if(cotaMinima != null) {
+			try {
+				Integer cotaMinimaDigitada = Integer.parseInt(cotaMinima);
+				String mensagem = caixaEletronico.armazenaCotaMinima(cotaMinimaDigitada);
+				JOptionPane.showMessageDialog(this, mensagem);
+				caixaEletronico.verificarCotaMinima();
+				} catch (NumberFormatException ne) {
+					JOptionPane.showMessageDialog(this, ne.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		        } catch (RuntimeException re) {
+		        	JOptionPane.showMessageDialog(this, re.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		        } catch (Exception e) {
+		        	JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		        }
+			}
+		}
 }
