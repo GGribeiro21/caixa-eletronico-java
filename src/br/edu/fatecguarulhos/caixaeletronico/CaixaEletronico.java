@@ -120,6 +120,9 @@ public class CaixaEletronico implements ICaixaEletronico{
 			}
 		}
 		public String armazenaCotaMinima(Integer minimo) {
+			//verificar se valor é positivo
+			if(minimo < 0)
+				throw new NumberFormatException("Insira um valor positivo");
             cotaMinima = minimo;
 		    String resposta = "Cota mínima atual de R$" + minimo;
 		    //logica de armazenar a cota minima para saque e criar um //mensagem(resposta)ao usuario
@@ -127,12 +130,14 @@ public class CaixaEletronico implements ICaixaEletronico{
 		}
 
         public void verificarCotaMinima() {
+        	// garantir que total esteja atualizado
             atualizarTotalDisponivel();
             if(cotaMinima > totalDisponivel)
                 throw new RuntimeException("Caixa vazio: Chame o operador.");
         }
 
         private void atualizarTotalDisponivel() {
+        	// resetar antes de calcular, para evitar valores acumulados
         	totalDisponivel = 0;
             for(int[] cedula : cedulas) {
                 // para cada cedula, adicionar o resultado do tipo(2, 5, 10 reais...) x quantidade
@@ -142,8 +147,6 @@ public class CaixaEletronico implements ICaixaEletronico{
         
         //Método responsável pelos registros de saques
         public void registrarSaque(Integer valor, String resultado) {
-        	//zerar o total antes de recalcular, evitando erro de acumulação errada
-        	totalDisponivel = 0;  
         	atualizarTotalDisponivel();  
         	
         	// Adiciona informações do saque ao extrato
@@ -155,8 +158,6 @@ public class CaixaEletronico implements ICaixaEletronico{
         //Método responsável por gerar o extrato ao clicar no botão sair
         public String gerarExtratoFinal() {
         	
-        	//zerar o total antes de recalcular, evitando erro de acumulação errada
-        	totalDisponivel = 0;
         	atualizarTotalDisponivel();
         
         	// Lógica para o caso de nenhum saque ter sido realizado

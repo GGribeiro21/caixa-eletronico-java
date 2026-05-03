@@ -172,6 +172,7 @@ public class TelaPrincipal extends JFrame {
 	
 	private void mostrarPainelSaque() {
 		try {
+			// garantir que o caixa tenha um valor maior que a cota mínima
 			caixaEletronico.verificarCotaMinima();
 			IconFontSwing.register(FontAwesome.getIconFont());
 			Icon icon = IconFontSwing.buildIcon(FontAwesome.MONEY, 30);
@@ -233,16 +234,19 @@ public class TelaPrincipal extends JFrame {
 		}
 		
 	private void mostrarPainelCotaMinima() {
+		// texto e coleta de valor
 		IconFontSwing.register(FontAwesome.getIconFont());
 		Icon icon = IconFontSwing.buildIcon(FontAwesome.MONEY, 30);
 		String cotaMinima = (String) JOptionPane.showInputDialog(this,"Digite o novo valor para cota mínima:","Repor",JOptionPane.INFORMATION_MESSAGE,icon, null, "");
-		// verificar se foi apertado o "cancel"
+		// verificar se foi apertado o botão "cancel"
 		if(cotaMinima != null) {
 			try {
 				Integer cotaMinimaDigitada = Integer.parseInt(cotaMinima);
 				String mensagem = caixaEletronico.armazenaCotaMinima(cotaMinimaDigitada);
 				JOptionPane.showMessageDialog(this, mensagem);
+				
 				caixaEletronico.verificarCotaMinima();
+
 				} catch (NumberFormatException ne) {
 					JOptionPane.showMessageDialog(this, ne.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		        } catch (RuntimeException re) {
