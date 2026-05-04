@@ -80,7 +80,7 @@ public class TelaPrincipal extends JFrame {
 		
 		btnEfeSaque.setBackground(new Color(201, 231, 227));
 		btnEfeSaque.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEfeSaque.setBounds(20, 69, 324, 34);
+		btnEfeSaque.setBounds(10, 69, 324, 34);
 		contentPane.add(btnEfeSaque);
 		
 		JLabel lblMAdm = new JLabel("Módulo do Administrador:");
@@ -97,14 +97,14 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnRelaCedu.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRelaCedu.setBackground(new Color(201, 231, 227));
-		btnRelaCedu.setBounds(20, 159, 324, 34);
+		btnRelaCedu.setBounds(10, 159, 324, 34);
 		contentPane.add(btnRelaCedu);
 		
 		//Botão responsável pelo valor disponivel no caixa
 		JButton btnValor = new JButton("Valor total disponível");
 		btnValor.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnValor.setBackground(new Color(201, 231, 227));
-		btnValor.setBounds(20, 204, 324, 34);
+		btnValor.setBounds(10, 204, 324, 34);
 		contentPane.add(btnValor);
 		btnValor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -121,7 +121,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnRepo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRepo.setBackground(new Color(201, 231, 227));
-		btnRepo.setBounds(20, 249, 324, 34);
+		btnRepo.setBounds(10, 249, 324, 34);
 		contentPane.add(btnRepo);
 		
 		
@@ -133,7 +133,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnCota.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCota.setBackground(new Color(201, 231, 227));
-		btnCota.setBounds(20, 294, 324, 34);
+		btnCota.setBounds(10, 294, 324, 34);
 		contentPane.add(btnCota);
 		
 		JLabel lblMAmbos = new JLabel("Módulo de Ambos:");
